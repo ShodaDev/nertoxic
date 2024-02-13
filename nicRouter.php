@@ -48,5 +48,5 @@ if(isset($_GET['page'])) {
     }
 
 } else {
-    $console->callError(true, "nicRoter.php", "The Router couldnt be loaded, please enable .httaccess or check it for errors");
+    $console->callError(true, "nicRouter.php", "The Router couldnt be loaded, please enable .httaccess or check it for errors");
 }
