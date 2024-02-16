@@ -304,4 +304,24 @@ class Functions
         file_put_contents(BASE_PATH."storage/downloads/".$filename, fopen($url, 'r'));
         return true;
     }
+
+    /*
+    * Upload a file
+    */
+    public function upload($url, $file)
+    {
+        $cfile = curl_file_create($file);
+        $data = array('file' => $cfile);
+
+        $opt = curl_init($url);
+        curl_setopt($opt, CURLOPT_URL, $url);
+        curl_setopt($opt, CURLOPT_POST, true);
+        curl_setopt($opt, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($opt, CURLOPT_POSTFIELDS, $data);
+
+        $resp = curl_exec($opt);
+        curl_close($opt);
+        
+        return $resp;
+    }
 }
